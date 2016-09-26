@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animated Human</title>
+	<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+	<header>
+		<h1>Animated Human</h1>
+		<p>An animated human character using 
+			<a href="" target="_blank">MakeHuman</a>, 
+			<a href="" target="_blank">Blender</a>, 
+			<a href="" target="_blank">Three.js</a>, &amp; 
+			<a href="" target="_blank">Ammo.js</a>
+		</p>
+	</header>
+	<main>
+		<div id="viewport" class="viewport">
+			<canvas class="fill"></canvas>
+			<!-- stats -->
+			<!-- dat.gui -->
+			<div class="modal fill fade">
+				<div class="container">
+					<div class="msg">Loading &hellip;</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<p>footer text goes here</p>
+	</footer>
+	<script src="//cdn.rawgit.com/mrdoob/stats.js/r16/build/stats.min.js"></script>
+	<script src="//cdn.rawgit.com/dataarts/dat.gui/v0.6.0/build/dat.gui.min.js"></script>
+	<script>
+
+	var domElements = {
+		viewport:  document.querySelector( '#viewport' ),
+		canvas:    document.querySelector( '#viewport canvas' ),
+		modal:     document.querySelector( '#viewport .modal' ),
+		container: document.querySelector( '#viewport .modal .container' ),
+		msg:       document.querySelector( '#viewport .msg' ),
+	}
+
+	</script>
+</body>
+</html>

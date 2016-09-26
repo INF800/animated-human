@@ -1,0 +1,69 @@
+body {
+	color: #444;
+	background-color: #eee;
+}
+
+header, main, footer {
+	width: 800px;
+	margin: 0 auto;
+}
+
+footer {
+	text-align: center;
+	font-size: small;
+}
+
+.viewport {
+	display: block;
+	position: relative;
+	width: 800px;
+	height: 450px;
+	margin: 0 auto;
+	font-family: monospace;
+	font-size: 16px;
+	color: #ccc;
+	background-color: #404040;
+}
+
+.viewport .fill {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.viewport .fade {
+	opacity: 1;
+	transition: opacity 1s linear;
+}
+
+.viewport .fade[hidden] {
+	display: inherit;
+	visibility: hidden;
+	opacity: 0 !important;
+	transition: visibility 0s 1s, opacity 1s linear;
+}
+
+.viewport .error {
+	color: orange;
+}
+
+.viewport .modal {
+	background-color: rgba( 0, 0, 0, 0.5 );
+}
+
+.viewport .modal .container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: 0;
+	padding: 0;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.viewport .modal .container .msg code {
+	white-space: nowrap;
+}

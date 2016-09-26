@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animated Human</title>
+	<link rel="stylesheet" href="index.css" />
+</head>
+<body>
+	<header>
+		<h1>&#128694; Animated Human</h1>
+		<p>This is an animated human character in a physics world. It was created
+			using
+			<a href="https://makehuman.org" target="_blank">MakeHuman</a>,
+			<a href="https://blender.org" target="_blank">Blender</a>,
+			<a href="https://three.org" target="_blank">Three.js</a>, &amp;
+			<a href="https://github.com/kripken/ammo.js#readme" target="_blank">Ammo.js</a>
+		</p>
+	</header>
+	<main>
+		<div id="viewport" class="viewport">
+			<canvas class="fill"></canvas>
+			<!-- stats -->
+			<!-- dat.gui -->
+			<div class="modal fill fade">
+				<div class="container">
+					<div class="msg">Initializing &hellip;</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<p>copyright © 2016 satori99. Some rights reserved.</p>
+	</footer>
+	<script src="https://cdn.rawgit.com/mrdoob/stats.js/r16/build/stats.min.js"></script>
+	<script src="https://cdn.rawgit.com/dataarts/dat.gui/v0.6.0/build/dat.gui.min.js"></script>
+	<script>
+
+	// constants
+
+	var APP_URL = 'build/three-app.js';
+
+	var SUPPORTS_WEBGL = ( function () {
+		try {
+			var canvas = document.createElement( 'canvas' )
+			return !! ( window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ) )
+		} catch ( e ) {
+			return false
+		}
+	} )();
+
+	// DOM elements
+
+	var DOM = {
+		viewport:  document.querySelector( '#viewport' ),
+		canvas:    document.querySelector( '#viewport canvas' ),
+		modal:     document.querySelector( '#viewport .modal' ),
+		container: document.querySelector( '#viewport .modal .container' ),
+		msg:       document.querySelector( '#viewport .msg' ),
+	};
+
+	// start ...
+
+	if ( ! SUPPORTS_WEBGL ) {
+
+		showMessage( '&#9888; WebGL is not supported!', true );
+
+	} else {
+
+		showMessage( '&#128694; Loading &hellip;' );
+
+		loadScript( APP_URL )
+			.then( function () {
+				showMessage( '&#128694; Loading Scene &hellip;' );
+				return APP.init()
+			} )
+			.catch( function ( err ) {
+				showMessage( '&#9888; ' + err, true );
+			} );
+
+	}
+
+	// utils
+
+	function showMessage ( text, isError ) {
+		DOM.modal.hidden = false;
+		DOM.msg.innerHTML = text;
+		DOM.msg.classList[ isError ? 'add' : 'remove' ]( 'error' );
+		console[ isError ? 'warn' : 'debug' ]( DOM.msg.textContent );
+	}
+
+	function loadScript ( url ) {
+		return new Promise( function ( resolve, reject ) {
+			var el = document.createElement( 'script' );
+			el.onerror = function () { reject( 'Failed to load script: <code>' + url + '</code>' ); };
+			el.onload = function () { resolve() };
+			el.src = url;
+			document.head.appendChild( el );
+		} );
+	}
+
+	</script>
+</body>
+</html>

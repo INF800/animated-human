@@ -1,0 +1,32 @@
+{
+  "name": "animated-human",
+  "version": "0.0.0",
+  "description": "An animated human character",
+  "author": "satori99 <satori.developer@gmail.com>",
+  "homepage": "https://satori99.github.io/animated-human",
+  "private": true,
+  "main": "index.html",
+  "scripts": {
+    "update": "node_modules/.bin/rollup -c",
+    "build": "node_modules/.bin/rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satori99/animated-human.git"
+  },
+  "keywords": [
+    "Animated",
+    "Character",
+    "MakeHuman",
+    "Blender",
+    "Three.js",
+    "Ammo.js"
+  ],
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "rollup": "^0.36.0",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-json": "^2.0.2"
+  }
+}
